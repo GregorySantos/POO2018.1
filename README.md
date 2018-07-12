@@ -13,5 +13,5 @@ Para rodar o programa, execute a classe TelaInicial.
 <li>Realize testes em sua Branch antes de atualizar a master com as suas funcionalidades.</li>
 <li>Antes de desenvolver uma nova funcionalidade ou corrigir algum bug, verifique se ela está citada em alguma Issue para referenciar a sua Branch. Caso não esteja, cria uma Issue da funcionalidade ou Bug que deseja implementar ou corrigir.</li>
 <li>Somente atualize a master através de requisições do Pull Request para a equipe acompanhar as implementações!!!</li>
-<li><strong>Não aceite o seu próprioPull Request!</strong> Comunique-se com a Equipe de Desenvolvimento antes!</li>
+<li><strong>Não aceite o seu próprio Pull Request!</strong> Comunique-se com a Equipe de Desenvolvimento antes!</li>
 </ul>
