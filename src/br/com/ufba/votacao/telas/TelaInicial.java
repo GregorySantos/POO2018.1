@@ -29,7 +29,6 @@ import javax.swing.BoxLayout;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 
-
 public class TelaInicial {
 	
 	private static String inputData;
@@ -46,7 +45,7 @@ public class TelaInicial {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			public void run() {//sfasfafs
 				try {
 					TelaInicial window = new TelaInicial();
 					window.frame.setVisible(true);
