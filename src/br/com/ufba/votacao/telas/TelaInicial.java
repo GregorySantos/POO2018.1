@@ -173,79 +173,11 @@ public class TelaInicial {
 		});
 		
 		btnCadastro.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				String user  = username.getText();
-				String pass = password.getText();
-				
-				
-				achei = false;
-				if (user.equals("")){
-					JOptionPane.showMessageDialog(panel_inicial,"Campo usuario em branco");
-				}
-				else if (pass.equals("")) {
-					JOptionPane.showMessageDialog(panel_inicial,"Campo senha em branco");
-				}
-				else {
-					inputData = user + ":" + pass;
-					panel_inicial.setVisible(false);
-					try {
-						arqPass = new File("pass");
-						if (!arqPass.exists()) {
-							arqPass.createNewFile();
-						}
-
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-					
-					FileWriter fileWriter;
-					try {
-						
-						try {
-							scanner = new Scanner(new File("pass"));
-
-							while (scanner.hasNextLine()) {
-
-								String lineFromFile = scanner.nextLine();
-								
-
-								String userAndPass[] = lineFromFile.split(":");
-
-								String user1 = userAndPass[0];
-								String pass1 = userAndPass[1];
-								if (user.equals(user1)) {
-									
-									achei = true;
-									break;
-								}
-							}
-						} catch (FileNotFoundException e1) {
-							e1.printStackTrace();
-						}
-						
-						
-						
-						if (!achei) {
-							fileWriter = new FileWriter(arqPass.getName(), true);
-							JOptionPane.showMessageDialog(panel_inicial,"Cadastro Efetuado com Sucesso");
-							BufferedWriter bw = new BufferedWriter(fileWriter);
-							bw.write(inputData + "\n");
-							bw.close();
-							frame.setVisible(false);
-							JTableRow obj = new JTableRow();
-
-						} else {
-							JOptionPane.showMessageDialog(panel_inicial,"Usuário já cadastrado");
-							frame.setVisible(false);
-							TelaInicial obj = new TelaInicial();
-						}
-						
-						
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
+				// TODO Auto-generated method stub
+				frame.setVisible(false);
+				TelaCadastro obj = new TelaCadastro();
 			}
 		});
 		
