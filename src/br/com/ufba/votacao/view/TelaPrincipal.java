@@ -31,6 +31,18 @@ import br.com.ufba.votacao.models.Usuario;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**Classe que implementa a tela de menu principal
+ * do programa.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
+
 public class TelaPrincipal {
 	
 	 public JFrame frame = new JFrame();

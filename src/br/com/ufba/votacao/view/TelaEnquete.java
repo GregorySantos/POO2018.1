@@ -28,6 +28,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
+/**Classe que implementa a votação
+ * numa enquete já criada.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
 public class TelaEnquete  extends JFrame {
 
 	private JFrame frame;

@@ -2,10 +2,20 @@ package br.com.ufba.votacao.models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
 import br.com.ufba.votacao.utils.IConstantes;
+
+/**Classe modelo para objetos do tipo Enquete, onde serão 
+ * contidos os valores de uma enquete.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
 
 public class Enquetes implements Comparable<Enquetes> {
 	

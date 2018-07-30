@@ -32,6 +32,18 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.SystemColor;
 
+/**Classe que implementa o historico
+ * de votação dos usuarios.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
+
 public class Historico extends JFrame {
 
 	private JFrame frame;

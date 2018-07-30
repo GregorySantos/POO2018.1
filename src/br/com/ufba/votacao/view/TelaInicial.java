@@ -32,6 +32,17 @@ import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 import java.awt.SystemColor;
 
+/**Classe que implementa a tela de login e 
+ * cadastro do usuario.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
 public class TelaInicial {
 	
 	private static String inputData;
