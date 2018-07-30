@@ -2,6 +2,18 @@ package br.com.ufba.votacao.models;
 
 import java.util.ArrayList;
 
+/**Classe modelo para objetos do tipo Usuario, onde serão 
+ * contidos os dados de um usuario.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
+
 public class Usuario {
 	private String id, nome, senha;
 	private int qtdEnquetesVotadas;

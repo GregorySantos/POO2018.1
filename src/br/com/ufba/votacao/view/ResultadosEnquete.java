@@ -21,6 +21,18 @@ import br.com.ufba.votacao.models.Enquetes;
 import java.awt.Color;
 import java.awt.Font;
 
+/**Classe que apresenta o resultado
+ * de uma enquete já votada ou encerrada.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
+
 public class ResultadosEnquete {
 
 	private JFrame frame;

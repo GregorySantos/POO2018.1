@@ -33,6 +33,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
+/**Classe que adiciona uma nova enquete
+ * ao sistema.
+* @author Gregory Santos
+* @author Yndyra Pinheiro
+* @author Mauro Meneses
+* @author Yuri Oliveira
+* @author Guilherme Costa
+* @author Lucas
+* @version 1.00
+* @since Release 01 da aplicação
+*/
+
 public class AdicionarEnquete {
 
 	private JFrame frame;
