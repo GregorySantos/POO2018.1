@@ -1,4 +1,4 @@
-package br.com.ufba.votacao.telas;
+package br.com.ufba.votacao.view;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import br.com.ufba.votacao.utils.DateValidator;
+import br.com.ufba.votacao.utils.IConstantes;
 
 import java.awt.Choice;
 import java.awt.Label;
@@ -40,6 +43,7 @@ public class AdicionarEnquete {
 	private DateValidator dateValidator;
 	private static JFrame frameTable;
 	private int selection;
+
 
 	/**
 	 * Launch the application.
@@ -74,7 +78,6 @@ public class AdicionarEnquete {
 		
 		frame = new JFrame();
 		frame.setSize(500,450);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		
@@ -89,7 +92,7 @@ public class AdicionarEnquete {
 		lblAdicionarEnquete.setBounds(175, 15, 143, 14);
 		panel.add(lblAdicionarEnquete);
 		
-		JLabel label_1 = new JLabel("Titulo");
+		JLabel label_1 = new JLabel("Título");
 		label_1.setBounds(100, 76, 46, 14);
 		panel.add(label_1);
 		
@@ -98,25 +101,29 @@ public class AdicionarEnquete {
 		titulo.setBounds(175, 73, 178, 20);
 		panel.add(titulo);
 		
-		Label label_2 = new Label("Numero de opcoes");
+		Label label_2 = new Label("Numero de opções");
 		label_2.setBounds(30, 96, 131, 22);
 		panel.add(label_2);
 		
-		Label label_3 = new Label("Opcao 1");
+		Label label_3 = new Label("Opção 1");
 		label_3.setBounds(86, 124, 75, 22);
 		panel.add(label_3);
 		
-		Label label_4 = new Label("Opcao  2");
+		Label label_4 = new Label("Opção  2");
 		label_4.setBounds(86, 152, 75, 22);
 		panel.add(label_4);
 		
-		Label label_5 = new Label("Opcao 3");
+		Label label_5 = new Label("Opção 3");
 		label_5.setBounds(86, 181, 75, 22);
 		panel.add(label_5);
 		
-		Label label_6 = new Label("Opcao 4");
+		Label label_6 = new Label("Opção 4");
 		label_6.setBounds(86, 209, 75, 22);
 		panel.add(label_6);
+		
+		Label label_7 = new Label("Opção 5");
+		label_7.setBounds(86, 237, 75, 22);
+		panel.add(label_7);
 		
 		TextField op1Text = new TextField();
 		op1Text.setBounds(175, 124, 178, 22);
@@ -130,18 +137,14 @@ public class AdicionarEnquete {
 		op3Text.setBounds(175, 181, 178, 22);
 		panel.add(op3Text);
 		
-		
 		TextField op4Text = new TextField();
 		op4Text.setBounds(175, 209, 178, 22);
 		panel.add(op4Text);
 		
-		Label label_7 = new Label("Opcao 5");
-		label_7.setBounds(86, 237, 75, 22);
-		panel.add(label_7);
-		
 		TextField op5Text = new TextField();
 		op5Text.setBounds(175, 237, 178, 22);
 		panel.add(op5Text);
+		
 		label_5.setVisible(false);
 		op3Text.setVisible(false);
 		label_6.setVisible(false);
@@ -155,11 +158,8 @@ public class AdicionarEnquete {
 		panel.add(dataTxt);
 		dataTxt.setColumns(10);
 		
-		
-		
 		JButton btnAddEnq = new JButton("Adicionar");
         
-        // button add row
 		ButtonGroup grupo = new ButtonGroup();
         btnAddEnq.addActionListener(new ActionListener(){
         	
@@ -167,45 +167,47 @@ public class AdicionarEnquete {
             public void actionPerformed(ActionEvent e) {
             	dateValidator = new DateValidator();
             	if (titulo.getText().equals("")|| op1Text.getText().equals("")|| op2Text.getText().equals("")|| dataTxt.getText().equals("")) {
-            		JOptionPane.showMessageDialog(frame, "Algum campo deixado em branco.");
-            	} else if(dateValidator.isThisDateValid(dataTxt.getText(), "dd/MM/yyyy") == false){
-            		JOptionPane.showMessageDialog(frame, "Data Invalida.");
+            		JOptionPane.showMessageDialog(frame, "Algum campo deixado em branco.", "ERRO", JOptionPane.ERROR_MESSAGE);
+            	} else if(dateValidator.isThisDateValid(dataTxt.getText(), IConstantes.DATEFORMAT) == false){
+            		JOptionPane.showMessageDialog(frame, "Data Inválida.", "ERRO", JOptionPane.ERROR_MESSAGE);
             	} else {
-            	String toWrite = Integer.toString(qtdEnq);
-            	
-            	toWrite = toWrite + ':' + titulo.getText() + ':' + selection + ':' + op1Text.getText() + ':' + '0' + ':' + op2Text.getText() + ':' + '0' + ':' + op3Text.getText() + ':' + '0' + ':' + op4Text.getText() + ':' + '0' + ':' + op5Text.getText() + ':' + '0' + ':' + dataTxt.getText();           	
-            	
-            	try {
-            		String aux = "Enquete"+qtdEnq;
-            		
-        			arqEnq = new File(aux);
-        			if (!arqEnq.exists()) {
-        				arqEnq.createNewFile();
-        			}
+            		String toWrite = Integer.toString(qtdEnq);
 
-        		} catch (IOException e1) {
-        			e1.printStackTrace();
-        		}
+            		toWrite = toWrite + ':' + titulo.getText() + ':' + selection + ':' 
+            				+ op1Text.getText() + ':' + '0' + ':' + op2Text.getText() + ':' + '0' + ':' 
+            				+ op3Text.getText() + ':' + '0' + ':' + op4Text.getText() + ':' + '0' + ':' 
+            				+ op5Text.getText() + ':' + '0' + ':' + dataTxt.getText();           	
 
-        		FileWriter fileWriter;
-        		try {
-        			fileWriter = new FileWriter(arqEnq.getName(), true);
-        			BufferedWriter bw = new BufferedWriter(fileWriter);
-        			bw.write(toWrite + "\n");
-        			bw.close();
-        		} catch (IOException e1) {
-        			e1.printStackTrace();
-        		}
-            	
-                frameTable.setVisible(false);
-                frame.setVisible(false);
-				TelaPrincipal obj = new TelaPrincipal();
+            		try {
+            			String aux = "Enquete"+qtdEnq;
+
+            			arqEnq = new File(aux);
+            			if (!arqEnq.exists()) {
+            				arqEnq.createNewFile();
+            			}
+
+            		} catch (IOException e1) {
+            			e1.printStackTrace();
+            		}
+
+            		FileWriter fileWriter;
+            		try {
+            			fileWriter = new FileWriter(arqEnq.getName(), true);
+            			BufferedWriter bw = new BufferedWriter(fileWriter);
+            			bw.write(toWrite + "\n");
+            			bw.close();
+            		} catch (IOException e1) {
+            			e1.printStackTrace();
+            		}
+
+            		frameTable.setVisible(false);
+            		frame.setVisible(false);
+            		TelaPrincipal obj = new TelaPrincipal();
                 
                 
-            }
-            }
+            	}
+			}
         });
-        
         
 		btnAddEnq.setBounds(202, 341, 89, 23);
 		panel.add(btnAddEnq);
@@ -229,23 +231,19 @@ public class AdicionarEnquete {
 		lblEx.setBounds(306, 303, 111, 14);
 		panel.add(lblEx);
 		
-		JRadioButton radioButton2 = new JRadioButton("2");
-		
+		JRadioButton radioButton2 = new JRadioButton("2");		
 		radioButton2.setBounds(185, 96, 41, 23);
 		panel.add(radioButton2);
 		
-		JRadioButton radioButton3 = new JRadioButton("3");
-		
+		JRadioButton radioButton3 = new JRadioButton("3");		
 		radioButton3.setBounds(226, 96, 37, 23);
 		panel.add(radioButton3);
 		
-		JRadioButton radioButton4 = new JRadioButton("4");
-		
+		JRadioButton radioButton4 = new JRadioButton("4");		
 		radioButton4.setBounds(261, 96, 37, 23);
 		panel.add(radioButton4);
 		
-		JRadioButton radioButton5 = new JRadioButton("5");
-		
+		JRadioButton radioButton5 = new JRadioButton("5");		
 		radioButton5.setBounds(294, 96, 37, 23);
 		panel.add(radioButton5);
 		
@@ -255,7 +253,6 @@ public class AdicionarEnquete {
 		grupo.add(radioButton5);
 		
 		radioButton2.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				selection = 2;
 				label_5.setVisible(false);

@@ -1,4 +1,4 @@
-package br.com.ufba.votacao.telas;
+package br.com.ufba.votacao.view;
 import java.io.BufferedWriter;
 
 import java.io.File;

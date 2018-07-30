@@ -1,4 +1,4 @@
-package br.com.ufba.votacao.telas;
+package br.com.ufba.votacao.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -24,6 +24,10 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+
+import br.com.ufba.votacao.models.Enquetes;
+import br.com.ufba.votacao.models.Usuario;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -102,10 +106,8 @@ public class TelaPrincipal {
 			
         	qtdEnq = 0;
         	
-        	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     		LocalDate localDate = LocalDate.now();
-    	   
-        	
+    	           	
 			while (true) {
 				
 				Scanner scanner = new Scanner(new File("Enquete" + qtdEnq));
@@ -114,9 +116,9 @@ public class TelaPrincipal {
 				Enquetes enquete = new Enquetes();
 
 				String arr[] = lineFromFile.split(":");
-				enquete.id = arr[0];
-				enquete.titulo = arr[1];
-				enquete.nop = arr[2];
+				enquete.setId(arr[0]);
+				enquete.setTitulo(arr[1]); 
+				enquete.numOpcoes = arr[2];
 				enquete.op1 = arr[3];
 				enquete.qtdOp1 = arr[4];
 				enquete.op2 = arr[5];
@@ -129,8 +131,6 @@ public class TelaPrincipal {
 				enquete.qtdOp5 = arr[12];
 				enquete.dtf = arr[13];
 				
-				//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				//LocalDate dateTime = LocalDate.parse(enq.dtf, formatter);
 				enquete.dateTime = LocalDate.parse(enquete.dtf, enquete.formatter);
 				
 				if(!localDate.isAfter(enquete.dateTime)) {
@@ -138,7 +138,7 @@ public class TelaPrincipal {
 					validos.add(enquete);					
 				} else {
 					expirados.add(enquete);
-					expiratedSurveys.add(enquete.id);
+					expiratedSurveys.add(enquete.getId());
 				}
 				qtdEnq++;
 				scanner.close();
@@ -146,8 +146,6 @@ public class TelaPrincipal {
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 		}
-        
-       
         
         Collections.sort(validos);
         
@@ -159,7 +157,7 @@ public class TelaPrincipal {
 							+ Integer.parseInt(enquete.qtdOp3) + Integer.parseInt(enquete.qtdOp4) 
 							+ Integer.parseInt(enquete.qtdOp5);
 			
-			String titulo = enquete.titulo;		
+			String titulo = enquete.getTitulo();		
 			
 			Scanner input = null;
 			try {
@@ -173,8 +171,8 @@ public class TelaPrincipal {
 			
 	        Usuario user = new Usuario(userData);
 			
-	        linha[0] = enquete.id;
-	        if(user.jaVotados.contains(enquete.id)) {
+	        linha[0] = enquete.getId();
+	        if(user.getJaVotados().contains(enquete.getId())) {
 	        	linha[1] = "(Votado) " + titulo;
 	        } else {
 	        	linha[1] = titulo;
@@ -194,7 +192,7 @@ public class TelaPrincipal {
 							+ Integer.parseInt(enquete.qtdOp3) + Integer.parseInt(enquete.qtdOp4) 
 							+ Integer.parseInt(enquete.qtdOp5);
 			
-			String titulo = enquete.titulo;	
+			String titulo = enquete.getTitulo();	
 			
 			Scanner input = null;
 			try {
@@ -208,8 +206,8 @@ public class TelaPrincipal {
 			
 	        Usuario user = new Usuario(userData);
 			
-	        linha[0] = enquete.id;
-	        if(user.jaVotados.contains(enquete.id)) {
+	        linha[0] = enquete.getId();
+	        if(user.getJaVotados().contains(enquete.getId())) {
 	        	linha[1] = "(Votado) " + titulo;
 	        } else {
 	        	linha[1] = titulo;
@@ -313,7 +311,7 @@ public class TelaPrincipal {
             }
         });*/
         
-        // get selected row data From table to textfields 
+ 
         table.addMouseListener(new MouseAdapter(){
         
         @Override
@@ -332,7 +330,7 @@ public class TelaPrincipal {
     			
     	        Usuario user = new Usuario(userData);
         		
-    	        if(user.jaVotados.contains(value) || expiratedSurveys.contains(value)) {
+    	        if(user.getJaVotados().contains(value) || expiratedSurveys.contains(value)) {
     	        	ResultadosEnquete obj = new ResultadosEnquete(Integer.parseInt(value), frame);
     	        } else {
     	        	TelaEnquete enq = new TelaEnquete((Integer.parseInt(value)), frame);
