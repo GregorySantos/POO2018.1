@@ -98,8 +98,8 @@ public class TelaInicial {
 		frame.getContentPane().add(panel_inicial);
 		panel_inicial.setLayout(null);
 		
-		JLabel lblVotacao = new JLabel("INSIRA NOME CRIATIVO AQUI");
-		lblVotacao.setBounds(50, 11, 395, 29);
+		JLabel lblVotacao = new JLabel("SISTEMA DE VOTAÇÃO");
+		lblVotacao.setBounds(57, 11, 388, 29);
 		panel_inicial.add(lblVotacao);
 		lblVotacao.setFont(new Font("Courier New", Font.BOLD, 23));
 		lblVotacao.setHorizontalAlignment(SwingConstants.CENTER);
